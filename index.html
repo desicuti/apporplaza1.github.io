@@ -15,6 +15,12 @@
             --grad-3: linear-gradient(135deg, #00F260, #0575E6);
             --grad-blog: linear-gradient(135deg, #FDC830, #F37335);
             
+            /* Colores CMY y Fluorescente */
+            --cmy-cyan: #00FFFF;
+            --cmy-magenta: #FF00FF;
+            --cmy-yellow: #FFFF00;
+            --verde-fluo: #39FF14; /* Verde neón/llamativo */
+
             --text-dark: #1A1A1A;
             --white: #ffffff;
             --border-thick: 5px solid #1A1A1A;
@@ -128,16 +134,48 @@
         .card-recomendaciones { background: var(--grad-2); }
         .card-tips { background: var(--grad-3); }
 
-        .btn-white {
+        /* ESTILOS DE BOTONES CMY */
+        .btn-base {
             display: inline-block;
             padding: 12px 35px;
-            background: white;
             color: var(--text-dark);
             text-decoration: none;
             border-radius: 50px;
             font-weight: 900;
             border: 3px solid var(--text-dark);
             box-shadow: 4px 4px 0px rgba(0,0,0,0.1);
+            transition: 0.2s;
+        }
+        
+        .btn-base:hover {
+            transform: translateY(-3px);
+            box-shadow: 6px 6px 0px rgba(0,0,0,0.2);
+        }
+
+        .btn-yellow { background: var(--cmy-yellow); }
+        .btn-magenta { background: var(--cmy-magenta); color: white; }
+        .btn-cyan { background: var(--cmy-cyan); }
+
+        /* BOTÓN BLOG XXL VERDE FLUOR */
+        .btn-blog-grande {
+            display: inline-block;
+            padding: 20px 45px;
+            background: var(--verde-fluo);
+            color: var(--text-dark); /* Texto oscuro para contraste */
+            text-decoration: none;
+            border-radius: 15px;
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.5rem;
+            border: var(--border-thick);
+            box-shadow: 6px 6px 0px var(--text-dark);
+            transition: 0.2s;
+            text-transform: uppercase;
+        }
+
+        .btn-blog-grande:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 10px 10px 0px var(--text-dark);
+            filter: brightness(1.1);
         }
 
         /* 4. SECCIÓN BLOG */
@@ -159,7 +197,9 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            align-items: center; 
             border-right: var(--border-thick);
+            text-align: center;
         }
 
         .blog-content { padding: 50px; background: white; }
@@ -168,8 +208,11 @@
             border-bottom: 2px dashed #ddd;
             padding: 20px 0;
             transition: 0.2s;
+            text-decoration: none;
+            display: block;
+            color: inherit;
         }
-        .post-preview:hover { padding-left: 10px; }
+        .post-preview:hover { padding-left: 10px; background: #fffcf9; }
         .post-preview h3 { font-size: 1.3rem; margin-top: 5px; }
         .post-preview small { font-weight: 800; color: #F37335; text-transform: uppercase; }
 
@@ -218,7 +261,7 @@
                     <h2>MIS RECURSOS</h2>
                     <p>Accede a mi biblioteca personal: Esquemas en PDF, canciones para memorizar y preguntas clave.</p>
                 </div>
-                <a href="https://desicuti.github.io/apporplaza1.github.io/esquemas230225.html" class="btn-white">ENTRAR</a>
+                <a href="https://desicuti.github.io/apporplaza1.github.io/esquemas230225.html" class="btn-base btn-yellow">ENTRAR</a>
             </div>
 
             <div class="card card-recomendaciones">
@@ -227,7 +270,7 @@
                     <h2>RECOMENDACIONES</h2>
                     <p>Las herramientas, libros y academias que yo mismo utilizo y que te ayudarán a marcar la diferencia.</p>
                 </div>
-                <a href="#" class="btn-white">VER LISTA</a>
+                <a href="#" class="btn-base btn-magenta">VER LISTA</a>
             </div>
 
             <div class="card card-tips">
@@ -236,20 +279,21 @@
                     <h2>TIPS Y ESTRATEGIA</h2>
                     <p>Metodologías de estudio, técnicas de concentración y consejos reales para no morir en el intento.</p>
                 </div>
-                <a href="#" class="btn-white">APRENDER MÁS</a>
+                <a href="#" class="btn-base btn-cyan">APRENDER MÁS</a>
             </div>
         </section>
 
         <section class="blog-section">
             <div class="blog-sidebar">
                 <h2 style="font-family: 'Archivo Black'; font-size: 3rem; line-height: 1;">MI DIARIO DE OPOSITOR</h2>
-                <p style="margin-top: 20px; font-weight: 800; font-size: 1.2rem;">Consejos reales, técnicas de estudio y mi experiencia con las academias.</p>
+                <p style="margin-top: 20px; margin-bottom: 30px; font-weight: 800; font-size: 1.2rem;">Consejos reales, técnicas de estudio y mi experiencia con las academias.</p>
+                <a href="https://desicuti.github.io/apporplaza1.github.io/blog230226.html" class="btn-blog-grande">IR AL BLOG</a>
             </div>
             <div class="blog-content">
-                <div class="post-preview">
+                <a href="https://desicuti.github.io/apporplaza1.github.io/blogacademiaopinion230226.html" class="post-preview">
                     <small>Estrategia</small>
                     <h3>¿Academia presencial u online? Mi honesta opinión.</h3>
-                </div>
+                </a>
                 <div class="post-preview">
                     <small>Recursos</small>
                     <h3>Mis 3 canales de YouTube favoritos para derecho administrativo.</h3>
@@ -258,7 +302,7 @@
                     <small>Mentalidad</small>
                     <h3>Cómo sobrevivir a un bloqueo mental de una semana.</h3>
                 </div>
-                <a href="#" style="display:inline-block; margin-top:30px; font-weight:900; color:var(--text-dark); text-decoration: none;">EXPLORAR EL BLOG →</a>
+                <a href="https://desicuti.github.io/apporplaza1.github.io/blog230226.html" style="display:inline-block; margin-top:30px; font-weight:900; color:var(--text-dark); text-decoration: none;">EXPLORAR EL BLOG →</a>
             </div>
         </section>
 
