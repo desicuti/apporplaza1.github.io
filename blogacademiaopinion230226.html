@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Academia presencial u online? Mi honesta opinión | Blog A por plaza</title>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Outfit:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --rainbow-vivid: linear-gradient(90deg, #FF0000, #FF7F00, #FFFF00, #00FF00, #0000FF, #4B0082, #8B00FF);
+            --grad-blog-article: linear-gradient(135deg, #FDC830, #F37335);
+            --text-dark: #1A1A1A;
+            --white: #ffffff;
+            --border-thick: 5px solid #1A1A1A;
+            /* Nuevos colores intensos */
+            --neon-green: #39FF14; 
+            --deep-garnet: #800000;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: linear-gradient(180deg, #ffffff 0%, #f0f4f8 100%);
+            color: var(--text-dark);
+            font-family: 'Outfit', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* HEADER */
+        .header-article-rainbow {
+            background: var(--rainbow-vivid);
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: var(--border-thick);
+            position: relative;
+        }
+
+        .header-article-rainbow h1 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            color: white;
+            text-shadow: 6px 6px 0px var(--text-dark);
+            text-transform: uppercase;
+            letter-spacing: -2px;
+        }
+
+        .header-article-rainbow p.subtitle {
+            background: var(--text-dark);
+            color: white;
+            display: inline-block;
+            padding: 8px 25px;
+            font-weight: 900;
+            margin-top: 15px;
+            transform: rotate(-1deg);
+            border: 3px solid white;
+        }
+
+        .back-btn {
+            position: absolute;
+            top: 20px; left: 20px;
+            background: white;
+            color: var(--text-dark);
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: 900;
+            border: 3px solid var(--text-dark);
+            border-radius: 10px;
+            box-shadow: 4px 4px 0px var(--text-dark);
+        }
+
+        /* CONTENEDOR */
+        .article-container {
+            max-width: 800px;
+            margin: 60px auto;
+            background: var(--white);
+            border: var(--border-thick);
+            border-radius: 40px;
+            box-shadow: 12px 12px 0px var(--text-dark);
+            padding: 50px;
+            line-height: 1.7;
+        }
+
+        .article-image {
+            width: 100%;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            border: 4px solid var(--text-dark);
+        }
+
+        h2 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 2.2rem;
+            margin: 40px 0 20px;
+            text-transform: uppercase;
+        }
+
+        /* CAJAS DE RESALTE MEJORADAS */
+        .highlight-box {
+            background: var(--neon-green);
+            border: 4px solid var(--text-dark);
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 20px;
+            box-shadow: 8px 8px 0px var(--text-dark);
+        }
+        
+        .highlight-box h3 {
+            font-family: 'Archivo Black', sans-serif;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            font-size: 1.6rem;
+        }
+
+        .highlight-box.warning {
+            background: var(--deep-garnet);
+            color: white;
+        }
+
+        .highlight-box.warning h3 {
+            color: white;
+            border-bottom-color: white;
+        }
+
+        .highlight-box ul, .highlight-box ol {
+            list-style: none;
+            padding: 0;
+        }
+
+        .highlight-box li {
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        /* BOTONES NAVEGACIÓN */
+        .article-navigation {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 60px;
+        }
+
+        .btn-nav {
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: 900;
+            border-radius: 50px;
+            border: 3px solid var(--text-dark);
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        .btn-nav.blog { background: #FFFF00; color: var(--text-dark); }
+        .btn-nav.home { background: var(--text-dark); color: white; }
+        .btn-nav:hover { transform: scale(1.05); }
+
+        footer {
+            margin-top: 100px;
+            padding: 60px;
+            background: var(--text-dark);
+            color: white;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .article-container { padding: 25px; margin: 20px; border-radius: 20px; }
+            .article-navigation { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header-article-rainbow">
+        <a href="https://desicuti.github.io/apporplaza1.github.io/blog230226.html" class="back-btn">← VOLVER</a>
+        <h1>¿ACADEMIA PRESENCIAL U ONLINE?</h1>
+        <p class="subtitle">MI HONESTA OPINIÓN 💬</p>
+    </header>
+
+    <div class="article-container">
+        <p style="text-align: right; font-weight: 800; margin-bottom: 20px;">📅 23/06/26</p>
+        
+        <img src="https://raw.githubusercontent.com/desicuti/apporplaza1.github.io/refs/heads/main/Gemini_Generated_Image_ndca0sndca0sndca.png" alt="Diferencias" class="article-image">
+
+        <p>Elegir dónde prepararte es la primera gran decisión de tu oposición. No es exageración: ese primer paso puede marcar tu ritmo, tu motivación y hasta tu salud mental. Quiero contarte los pros y contras reales, sin filtros.</p>
+
+        <h2>1. Academia presencial</h2>
+        
+        <div class="highlight-box">
+            <h3>✨ LO MEJOR (PROS)</h3>
+            <ul>
+                <li>✅ <strong>Rutina:</strong> Te obliga a salir de casa y sentarte.</li>
+                <li>✅ <strong>Tribu:</strong> El contacto humano con otros opositores ayuda.</li>
+                <li>✅ <strong>Dudas:</strong> Respuestas al momento, cara a cara.</li>
+            </ul>
+        </div>
+
+        <div class="highlight-box warning">
+            <h3>⚠️ LO PEOR (CONTRAS)</h3>
+            <ul>
+                <li>❌ <strong>Tiempo:</strong> Desplazamientos que roban horas de estudio.</li>
+                <li>❌ <strong>Rigidez:</strong> Si no vas, pierdes la clase. Punto.</li>
+                <li>❌ <strong>Coste:</strong> Suelen ser bastante más caras.</li>
+            </ul>
+        </div>
+
+        <h2>2. Academia Online</h2>
+
+        <div class="highlight-box">
+            <h3>✨ LO MEJOR (PROS)</h3>
+            <ul>
+                <li>✅ <strong>Libertad:</strong> Tú marcas las horas y el lugar.</li>
+                <li>✅ <strong>Ahorro:</strong> Ni gasolina, ni parkings, ni tiempo perdido.</li>
+                <li>✅ <strong>Repetición:</strong> Puedes ver las clases 100 veces si quieres.</li>
+            </ul>
+        </div>
+
+        <div class="highlight-box warning">
+            <h3>⚠️ LO PEOR (CONTRAS)</h3>
+            <ul>
+                <li>❌ <strong>Soledad:</strong> Estás tú solo ante la pantalla.</li>
+                <li>❌ <strong>Disciplina:</strong> Es muy fácil decir "ya lo veré mañana".</li>
+                <li>❌ <strong>Dudas:</strong> A veces tardan horas o días en responder.</li>
+            </ul>
+        </div>
+
+        <h2>3. Mi veredicto honesto</h2>
+        <p>Después de pasar por las dos, **yo me quedo con la ONLINE**. El tiempo es el recurso más escaso de un opositor y no se puede tirar en el tráfico. Pero recuerda: si eres de los que se distraen con una mosca, la presencial te salvará la vida.</p>
+
+        <div class="article-navigation">
+            <a href="https://desicuti.github.io/apporplaza1.github.io/blog230226.html" class="btn-nav blog">Volver al Blog</a>
+            <a href="https://desicuti.github.io/apporplaza1.github.io/index.html" class="btn-nav home">Volver a Inicio</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 A POR PLAZA | TU PLAZA ESTÁ CERCA 🚀</p>
+    </footer>
+
+</body>
+</html>
