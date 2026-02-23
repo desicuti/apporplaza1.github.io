@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca de Esquemas | A por plaza</title>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Outfit:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --rainbow-vivid: linear-gradient(90deg, #FF0000, #FF7F00, #FFFF00, #00FF00, #0000FF, #4B0082, #8B00FF);
+            --grad-barca: linear-gradient(135deg, #a50044, #004d98);
+            --text-dark: #1A1A1A;
+            --border-thick: 5px solid #1A1A1A;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #ffffff;
+            color: var(--text-dark);
+            font-family: 'Outfit', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* HEADER */
+        .header-mini {
+            background: var(--rainbow-vivid);
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: var(--border-thick);
+        }
+
+        .header-mini h1 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(2rem, 8vw, 4rem);
+            color: white;
+            text-shadow: 4px 4px 0px var(--text-dark);
+            text-transform: uppercase;
+        }
+
+        .main-container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+
+        /* SECCIONES */
+        .bloque-section { margin-bottom: 60px; }
+
+        .bloque-title {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.8rem;
+            display: inline-block;
+            padding: 10px 25px;
+            color: white;
+            background: var(--text-dark);
+            transform: rotate(-1deg);
+            margin-bottom: 30px;
+            border-radius: 5px;
+        }
+
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        /* TARJETAS */
+        .res-card {
+            border: var(--border-thick);
+            border-radius: 30px;
+            padding: 30px;
+            box-shadow: 10px 10px 0px var(--text-dark);
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .res-card:hover { transform: translate(-5px, -5px); box-shadow: 15px 15px 0px var(--text-dark); }
+
+        /* Variantes de color */
+        .card-orange { background: linear-gradient(135deg, #FF8C00, #FF4500); color: white; } 
+        .card-yellow { background: linear-gradient(135deg, #FFFF00, #FFD700); color: var(--text-dark); }
+        .card-green-trebep { background: linear-gradient(135deg, #00FF00, #008000); color: white; }
+        .card-purple { background: linear-gradient(135deg, #8E54E9, #4776E6); color: white; }
+        .card-access { background: linear-gradient(135deg, #ec008c, #642b73); color: white; }
+        .card-psico-blue { background: linear-gradient(135deg, #0575E6, #00F260); color: white; }
+        .card-cyan { background: linear-gradient(135deg, #1CB5E0, #000046); color: white; }
+
+        .tag {
+            font-size: 0.75rem;
+            font-weight: 900;
+            padding: 6px 12px;
+            border-radius: 8px;
+            text-transform: uppercase;
+            align-self: flex-start;
+            background: rgba(0,0,0,0.2);
+            border: 2px solid currentColor;
+        }
+
+        .res-card h3 { 
+            font-family: 'Archivo Black', sans-serif; 
+            font-size: 1.6rem; 
+            line-height: 1.1;
+        }
+
+        .res-card:not(.card-yellow) h3 { text-shadow: 2px 2px 0px rgba(0,0,0,0.2); }
+
+        .res-card p { font-weight: 600; opacity: 0.95; line-height: 1.3; }
+
+        /* BOTONES */
+        .btn-action {
+            display: inline-block;
+            padding: 12px 20px;
+            background: white;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 900;
+            border-radius: 50px;
+            margin-top: auto;
+            text-align: center;
+            border: 3px solid var(--text-dark);
+            transition: 0.2s;
+            text-transform: uppercase;
+        }
+
+        .card-yellow .btn-action { background: var(--text-dark); color: white; }
+
+        .btn-action:hover { transform: scale(1.05); background: var(--text-dark); color: white; }
+        .card-yellow .btn-action:hover { background: white; color: var(--text-dark); }
+
+        /* SECCIÓN LEYES FUTBOLERAS */
+        .futbol-section {
+            background: var(--grad-barca);
+            border: var(--border-thick);
+            border-radius: 40px;
+            padding: 60px 20px;
+            text-align: center;
+            color: white;
+            margin-top: 80px;
+            box-shadow: 15px 15px 0px #FFFF00;
+        }
+
+        .futbol-section i { font-size: 5rem; margin-bottom: 20px; filter: drop-shadow(4px 4px 0px var(--text-dark)); }
+        .futbol-section h2 { font-family: 'Archivo Black', sans-serif; font-size: 3rem; margin-bottom: 15px; }
+
+        .btn-home {
+            display: block;
+            max-width: 300px;
+            margin: 60px auto;
+            padding: 20px;
+            background: var(--rainbow-vivid);
+            color: white;
+            text-align: center;
+            font-family: 'Archivo Black', sans-serif;
+            text-decoration: none;
+            border: var(--border-thick);
+            border-radius: 50px;
+            box-shadow: 8px 8px 0px var(--text-dark);
+            transition: 0.3s;
+        }
+
+        .btn-home:hover { transform: translateY(-5px); box-shadow: 12px 12px 0px var(--text-dark); }
+
+    </style>
+</head>
+<body>
+
+    <header class="header-mini">
+        <h1>BIBLIOTECA DE RECURSOS</h1>
+    </header>
+
+    <div class="main-container">
+
+        <section class="bloque-section">
+            <h2 class="bloque-title">⚖️ LEYES Y CONSTITUCIÓN</h2>
+            <div class="resource-grid">
+                <div class="res-card card-orange">
+                    <span class="tag">Ley 39/2015</span>
+                    <h3>LPAC</h3>
+                    <p>Todo sobre el Procedimiento Administrativo Común: esquemas, plazos y recursos.</p>
+                    <a href="#" class="btn-action">Estudiar</a>
+                </div>
+                <div class="res-card card-green-trebep">
+                    <span class="tag">TREBEP</span>
+                    <h3>Personal Público</h3>
+                    <p>Derechos, deberes, situaciones administrativas y código de conducta.</p>
+                    <a href="#" class="btn-action">Estudiar</a>
+                </div>
+                <div class="res-card card-yellow">
+                    <span class="tag">C.E.</span>
+                    <h3>Constitución Española</h3>
+                    <p>Desde el Título Preliminar hasta la Reforma. El núcleo de tu oposición.</p>
+                    <a href="#" class="btn-action">Estudiar</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="bloque-section">
+            <h2 class="bloque-title">💻 INFORMÁTICA</h2>
+            <div class="resource-grid">
+                <div class="res-card card-purple">
+                    <span class="tag">Office</span>
+                    <h3>Word</h3>
+                    <p>Atajos de teclado, funciones avanzadas, cintas de opciones y trucos rápidos.</p>
+                    <a href="#" class="btn-action">Estudiar</a>
+                </div>
+                <div class="res-card card-access">
+                    <span class="tag">Office</span>
+                    <h3>Access</h3>
+                    <p>Bases de datos, relaciones, consultas y todo lo necesario para dominar el examen.</p>
+                    <a href="#" class="btn-action">Estudiar</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="bloque-section">
+            <h2 class="bloque-title">🧠 PSICOTÉCNICOS</h2>
+            <div class="resource-grid">
+                <div class="res-card card-psico-blue">
+                    <span class="tag">Cálculo</span>
+                    <h3>Numéricos</h3>
+                    <p>Series, problemas matemáticos y trucos de agilidad mental.</p>
+                    <a href="#" class="btn-action">Estudiar</a>
+                </div>
+                <div class="res-card card-cyan">
+                    <span class="tag">Lengua</span>
+                    <h3>Verbal</h3>
+                    <p>Sinónimos, antónimos, ortografía y comprensión lectora.</p>
+                    <a href="#" class="btn-action">Estudiar</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="futbol-section">
+            <i class="fas fa-futbol"></i>
+            <h2>LEYES FUTBOLERAS</h2>
+            <p style="font-size: 1.3rem; font-weight: 700; margin-bottom: 30px; line-height: 1.4;">
+                ¿Eres culé? Aprende la Constitución como si fuera la alineación del Barça. <br>
+                ¡Cambiamos artículos por goles y leyes por ligas!
+            </p>
+            <a href="#" style="background: #FFFF00; padding: 18px 45px; border-radius: 50px; color: #a50044; text-decoration: none; font-weight: 900; border: 4px solid #1A1A1A; font-size: 1.2rem; display: inline-block;">¡ENTRAR AL VESTUARIO!</a>
+        </section>
+
+        <a href="https://desicuti.github.io/aporplaza/index.html" class="btn-home">VOLVER AL INICIO</a>
+
+    </div>
+
+    <footer style="padding: 40px; text-align: center; font-weight: 800; opacity: 0.7;">
+        <p>© 2026 A POR PLAZA | TU PLAZA ESTÁ CADA VEZ MÁS CERCA</p>
+    </footer>
+
+</body>
+</html>

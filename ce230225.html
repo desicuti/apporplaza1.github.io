@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Constitución Española | A por plaza</title>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Outfit:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --rainbow-vivid: linear-gradient(90deg, #FF0000, #FF7F00, #FFFF00, #00FF00, #0000FF, #4B0082, #8B00FF);
+            --grad-ce: linear-gradient(135deg, #FFFF00, #FFD700);
+            --text-dark: #1A1A1A;
+            --border-thick: 5px solid #1A1A1A;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            /* FONDO ARCOÍRIS */
+            background: var(--rainbow-vivid);
+            background-attachment: fixed; /* Para que el fondo no se mueva al hacer scroll */
+            color: var(--text-dark);
+            font-family: 'Outfit', sans-serif;
+            line-height: 1.6;
+        }
+
+        /* HEADER */
+        .header-ce {
+            background: white; /* Blanco para que resalte sobre el fondo arcoíris */
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: var(--border-thick);
+        }
+
+        .header-ce h1 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            color: var(--text-dark);
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            text-shadow: 3px 3px 0px #eee;
+        }
+
+        .btn-back {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 30px;
+            background: var(--text-dark);
+            color: white;
+            text-decoration: none;
+            font-weight: 900;
+            border-radius: 50px;
+            border: 3px solid var(--text-dark);
+            transition: 0.3s;
+        }
+
+        .btn-back:hover { 
+            transform: scale(1.1); 
+            background: #FFFF00; 
+            color: var(--text-dark); 
+        }
+
+        .main-container { max-width: 900px; margin: 40px auto; padding: 0 20px; }
+
+        /* BLOQUES DE CONTENIDO */
+        .seccion-bloque {
+            background: white;
+            border: var(--border-thick);
+            border-radius: 30px;
+            margin-bottom: 50px;
+            padding: 40px;
+            box-shadow: 15px 15px 0px rgba(0,0,0,0.3);
+        }
+
+        .seccion-titulo {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: var(--text-dark);
+            border-bottom: 6px solid #FFFF00;
+            padding-bottom: 10px;
+        }
+
+        /* IMÁGENES Y PDF */
+        .img-esquema {
+            width: 100%;
+            border: var(--border-thick);
+            border-radius: 20px;
+            margin: 20px 0;
+            box-shadow: 8px 8px 0px #eee;
+        }
+
+        .pdf-container {
+            width: 100%;
+            height: 600px;
+            border: var(--border-thick);
+            border-radius: 20px;
+            overflow: hidden;
+            margin-top: 20px;
+            background: #f9f9f9;
+        }
+
+        /* MINIATURA DE VÍDEO CLICKABLE */
+        .video-thumbnail-link {
+            display: block;
+            position: relative;
+            text-decoration: none;
+            border: var(--border-thick);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+
+        .video-thumbnail-link:hover {
+            transform: scale(1.02);
+            box-shadow: 0px 0px 30px rgba(255,255,255,0.5);
+        }
+
+        .video-thumbnail-link img {
+            width: 100%;
+            display: block;
+            filter: brightness(0.9);
+        }
+
+        .play-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 0, 0, 0.9);
+            color: white;
+            padding: 20px 35px;
+            border-radius: 20px;
+            font-size: 1.5rem;
+            border: 4px solid white;
+            font-family: 'Archivo Black', sans-serif;
+            box-shadow: 0px 10px 20px rgba(0,0,0,0.4);
+        }
+
+        .empty-msg {
+            padding: 30px;
+            background: #f0f0f0;
+            border-radius: 20px;
+            text-align: center;
+            font-weight: 800;
+            border: 3px dashed var(--text-dark);
+            color: #666;
+        }
+
+        footer {
+            padding: 60px 20px; 
+            background: var(--text-dark); 
+            color: white; 
+            text-align: center;
+            margin-top: 50px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="header-ce">
+        <h1>CONSTITUCIÓN ESPAÑOLA</h1>
+        <a href="index.html" class="btn-back"><i class="fas fa-arrow-left"></i> VOLVER A LA BIBLIOTECA</a>
+    </header>
+
+    <div class="main-container">
+
+        <section class="seccion-bloque">
+            <h2 class="seccion-titulo">🏛️ TÍTULO PRELIMINAR</h2>
+            <div class="empty-msg">
+                <i class="fas fa-hammer"></i> SECCIÓN EN CONSTRUCCIÓN
+            </div>
+        </section>
+
+        <section class="seccion-bloque">
+            <h2 class="seccion-titulo">🛡️ DERECHOS Y DEBERES</h2>
+            <p><strong>Esquema: Artículos 15 al 28</strong></p>
+            
+            <img src="https://raw.githubusercontent.com/desicuti/apporplaza1.github.io/refs/heads/main/CE%20Arts%2015%20a%2028%20Esquema.png" 
+                 alt="Esquema Artículos 15 a 28" 
+                 class="img-esquema">
+
+            <p style="margin-top: 30px;"><strong>Visor PDF Interactivo:</strong></p>
+            <div class="pdf-container">
+                <iframe src="https://drive.google.com/file/d/1dTzUuIUmblf0bTz7f3dznEze5wU5Sskj/preview" 
+                        width="100%" height="100%"></iframe>
+            </div>
+        </section>
+
+        <section class="seccion-bloque">
+            <h2 class="seccion-titulo">⚖️ PODER JUDICIAL</h2>
+            <p>Haz clic en la imagen para ver el vídeo musical del Título VI en YouTube:</p>
+            
+            <a href="https://www.youtube.com/watch?v=ADi58_8J9E0" target="_blank" class="video-thumbnail-link">
+                <img src="https://img.youtube.com/vi/ADi58_8J9E0/maxresdefault.jpg" alt="Miniatura Vídeo Poder Judicial">
+                <div class="play-overlay">
+                    <i class="fab fa-youtube"></i> VER VÍDEO
+                </div>
+            </a>
+            <p style="text-align: center; margin-top: 15px; font-size: 0.9rem; font-weight: 700;">
+                (Se abrirá en una pestaña nueva)
+            </p>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>© 2026 A POR PLAZA | TU PLAZA ESTÁ CADA VEZ MÁS CERCA</p>
+    </footer>
+
+</body>
+</html>
