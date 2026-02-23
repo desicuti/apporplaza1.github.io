@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | A por plaza</title>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Outfit:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --rainbow-vivid: linear-gradient(90deg, #FF0000, #FF7F00, #FFFF00, #00FF00, #0000FF, #4B0082, #8B00FF);
+            --grad-blog: linear-gradient(135deg, #FDC830, #F37335);
+            --text-dark: #1A1A1A;
+            --white: #ffffff;
+            --border-thick: 5px solid #1A1A1A;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: linear-gradient(180deg, #ffffff 0%, #f0f4f8 100%);
+            color: var(--text-dark);
+            font-family: 'Outfit', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* 1. HEADER ARCOÍRIS */
+        .header-rainbow {
+            background: var(--rainbow-vivid);
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: var(--border-thick);
+            position: relative;
+        }
+
+        .header-rainbow h1 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(3rem, 10vw, 6rem);
+            color: white;
+            text-shadow: 6px 6px 0px var(--text-dark);
+            text-transform: uppercase;
+            letter-spacing: -3px;
+        }
+
+        .header-rainbow .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: white;
+            color: var(--text-dark);
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: 900;
+            border: 3px solid var(--text-dark);
+            border-radius: 10px;
+            box-shadow: 4px 4px 0px var(--text-dark);
+        }
+
+        /* 2. CONTENEDOR DE ENTRADAS */
+        .main-container { max-width: 900px; margin: 60px auto; padding: 0 20px; }
+
+        .blog-post {
+            background: white;
+            border: var(--border-thick);
+            border-radius: 30px;
+            margin-bottom: 50px;
+            overflow: hidden;
+            box-shadow: 10px 10px 0px var(--text-dark);
+            display: flex;
+            flex-direction: column;
+            transition: 0.3s;
+        }
+
+        .blog-post:hover {
+            transform: translateY(-5px);
+            box-shadow: 15px 15px 0px var(--grad-blog);
+        }
+
+        .post-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-bottom: var(--border-thick);
+        }
+
+        .post-content {
+            padding: 40px;
+        }
+
+        .post-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .post-date {
+            font-weight: 900;
+            background: var(--text-dark);
+            color: white;
+            padding: 5px 15px;
+            transform: rotate(-1deg);
+            font-size: 0.9rem;
+        }
+
+        .post-category {
+            color: #F37335;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .post-content h2 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 15px;
+            line-height: 1.1;
+        }
+
+        .post-content p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #444;
+            margin-bottom: 25px;
+        }
+
+        .btn-read-more {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--grad-blog);
+            color: var(--text-dark);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 900;
+            border: 3px solid var(--text-dark);
+            box-shadow: 4px 4px 0px var(--text-dark);
+            transition: 0.2s;
+        }
+
+        .btn-read-more:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px var(--text-dark);
+        }
+
+        /* 3. FOOTER */
+        footer {
+            margin-top: 100px;
+            padding: 80px 20px;
+            background: var(--text-dark);
+            color: white;
+            text-align: center;
+            clip-path: polygon(0 10%, 100% 0, 100% 100%, 0% 100%);
+        }
+
+        @media (max-width: 600px) {
+            .post-content h2 { font-size: 1.5rem; }
+            .post-image { height: 200px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header-rainbow">
+        <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> INICIO</a>
+        <h1>BLOG</h1>
+        <p>CONSEJOS Y ESTRATEGIA REAL 🖋️</p>
+    </header>
+
+    <div class="main-container">
+
+        <article class="blog-post">
+            <img src="https://yt3.ggpht.com/4VOWNvMy7sSOaJsfsCom3nQkbFU0pXCntemgSz0hO0fiOLfi2ayD54R6DS3an-YSdIbbVBE0lg=s600-c-k-c0x00ffffff-no-rj-rp-mo" alt="Academia" class="post-image">
+            <div class="post-content">
+                <div class="post-meta">
+                    <span class="post-category">Estrategia</span>
+                    <span class="post-date">23/02/26</span>
+                </div>
+                <h2>¿Academia presencial u online? Mi honesta opinión.</h2>
+                <p>Elegir dónde prepararte es la primera gran decisión de tu oposición. Analizo los pros y contras de cada modelo basándome en mi propia experiencia en las trincheras del estudio.</p>
+                <a href="#" class="btn-read-more">VER MÁS</a>
+            </div>
+        </article>
+
+        <article class="blog-post">
+            <img src="https://yt3.ggpht.com/4VOWNvMy7sSOaJsfsCom3nQkbFU0pXCntemgSz0hO0fiOLfi2ayD54R6DS3an-YSdIbbVBE0lg=s600-c-k-c0x00ffffff-no-rj-rp-mo" alt="YouTube" class="post-image">
+            <div class="post-content">
+                <div class="post-meta">
+                    <span class="post-category">Recursos</span>
+                    <span class="post-date">23/02/26</span>
+                </div>
+                <h2>Mis 3 canales de YouTube favoritos para derecho administrativo</h2>
+                <p>No todo el contenido es igual. Te revelo los canales que mejor explican la LPAC y la LRJSP para que dejes de ver el derecho administrativo como un lenguaje alienígena.</p>
+                <a href="#" class="btn-read-more">VER MÁS</a>
+            </div>
+        </article>
+
+        <article class="blog-post">
+            <img src="https://yt3.ggpht.com/4VOWNvMy7sSOaJsfsCom3nQkbFU0pXCntemgSz0hO0fiOLfi2ayD54R6DS3an-YSdIbbVBE0lg=s600-c-k-c0x00ffffff-no-rj-rp-mo" alt="Bloqueo mental" class="post-image">
+            <div class="post-content">
+                <div class="post-meta">
+                    <span class="post-category">Mentalidad</span>
+                    <span class="post-date">23/02/26</span>
+                </div>
+                <h2>Cómo sobrevivir a un bloqueo mental de una semana</h2>
+                <p>Hay días (y semanas) en los que el cerebro dice basta. Aprende a identificar el burnout opositor y, sobre todo, cómo salir de él sin sentir que has perdido el ritmo.</p>
+                <a href="#" class="btn-read-more">VER MÁS</a>
+            </div>
+        </article>
+
+    </div>
+
+    <footer>
+        <p style="font-weight: 900; color: #FFFF00; margin-bottom: 10px;">A POR TU PLAZA 🚀</p>
+        <p style="font-weight: 300; opacity: 0.6;">© 2026 A POR PLAZA | TU HUB DE CONFIANZA</p>
+    </footer>
+
+</body>
+</html>
