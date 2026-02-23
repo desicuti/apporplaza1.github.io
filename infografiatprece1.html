@@ -1,185 +1,293 @@
-<style>
-    /* CONTENEDOR DE LA INFOGRAFÍA */
-    .info-preliminar {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 20px;
-        padding: 10px;
-        font-family: 'Outfit', sans-serif;
-    }
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Título Preliminar - Constitución Española | A por plaza</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Outfit:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --rainbow-vivid: linear-gradient(90deg, #FF0000, #FF7F00, #FFFF00, #00FF00, #0000FF, #4B0082, #8B00FF);
+            --text-dark: #1A1A1A;
+            --border-thick: 5px solid #1A1A1A;
+        }
 
-    /* ESTILO BASE DE TARJETAS */
-    .art-card {
-        border: 4px solid #1A1A1A;
-        border-radius: 25px;
-        padding: 25px;
-        position: relative;
-        transition: 0.3s;
-        box-shadow: 8px 8px 0px #1A1A1A;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        overflow: hidden;
-    }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    .art-card:hover {
-        transform: translate(-4px, -4px);
-        box-shadow: 12px 12px 0px #1A1A1A;
-    }
+        body {
+            /* FONDO AHORA BLANCO */
+            background: #FFFFFF;
+            color: var(--text-dark);
+            font-family: 'Outfit', sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+        }
 
-    .art-num {
-        font-family: 'Archivo Black', sans-serif;
-        font-size: 1.2rem;
-        background: #1A1A1A;
-        color: white;
-        padding: 5px 15px;
-        border-radius: 50px;
-        align-self: flex-start;
-        text-transform: uppercase;
-    }
+        /* HEADER CON DEGRADADO ARCOÍRIS */
+        .header-ce {
+            background: var(--rainbow-vivid); /* Degradado aquí */
+            padding: 40px 20px;
+            text-align: center;
+            border: var(--border-thick);
+            border-radius: 30px;
+            max-width: 1200px;
+            margin: 0 auto 30px auto;
+            box-shadow: 10px 10px 0px rgba(0,0,0,0.1);
+        }
 
-    .art-card h3 {
-        font-family: 'Archivo Black', sans-serif;
-        font-size: 1.4rem;
-        line-height: 1.1;
-        margin-bottom: 5px;
-    }
+        /* Ajuste de color para que resalte sobre el arcoíris */
+        .header-ce h1 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(1.8rem, 5vw, 3.5rem);
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            color: white;
+            text-shadow: 3px 3px 0px #000;
+        }
 
-    .art-card p {
-        font-size: 0.95rem;
-        font-weight: 600;
-        line-height: 1.4;
-    }
+        .header-ce p {
+            color: white;
+            text-shadow: 2px 2px 0px #000;
+            font-weight: 700;
+            margin-top: 10px;
+        }
 
-    /* COLORES ARCOÍRIS POR ARTÍCULO */
-    .art1 { background: #FF3D00; color: white; grid-column: span 2; } /* Rojo - Estado */
-    .art2 { background: #FF9100; color: white; } /* Naranja - Unidad/Autonomía */
-    .art3 { background: #FFD600; color: #1A1A1A; } /* Amarillo - Lenguas */
-    .art4 { background: #00E676; color: #1A1A1A; } /* Verde - Bandera */
-    .art5 { background: #00E5FF; color: #1A1A1A; } /* Cian - Capital */
-    .art6 { background: #2979FF; color: white; } /* Azul - Partidos */
-    .art7 { background: #651FFF; color: white; } /* Morado - Sindicatos */
-    .art8 { background: #D500F9; color: white; } /* Magenta - FFAA */
-    .art9 { background: #F50057; color: white; grid-column: span 2; } /* Rosa - Principios */
+        /* CONTENEDOR DE LA BOTONERA */
+        .nav-links-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
 
-    /* ICONOS */
-    .art-icon {
-        font-size: 2.5rem;
-        margin-bottom: 10px;
-        filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.2));
-    }
+        .nav-btn {
+            text-decoration: none;
+            padding: 15px 25px;
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1rem;
+            color: #1A1A1A;
+            border: 4px solid #1A1A1A;
+            border-radius: 15px;
+            transition: 0.2s;
+            box-shadow: 6px 6px 0px #1A1A1A;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-    /* LISTAS INTERNAS ART 1 Y 9 */
-    .valores-list, .principios-list {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        margin-top: 10px;
-    }
+        .nav-btn:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: 9px 9px 0px #1A1A1A;
+            color: white;
+        }
 
-    .tag-v {
-        background: rgba(255,255,255,0.2);
-        border: 2px solid white;
-        padding: 4px 10px;
-        border-radius: 8px;
-        font-size: 0.8rem;
-        font-weight: 900;
-        text-transform: uppercase;
-    }
+        .btn-inicio { background-color: #00FF00; }
+        .btn-esquemas { background-color: #FF00FF; }
+        .btn-ce { background-color: #FFFF00; }
 
-    .tag-p {
-        background: rgba(0,0,0,0.1);
-        border: 2px solid rgba(0,0,0,0.2);
-        padding: 5px;
-        border-radius: 5px;
-        font-size: 0.75rem;
-        font-weight: 800;
-    }
+        .btn-inicio:hover { background-color: #1A1A1A; }
+        .btn-esquemas:hover { background-color: #1A1A1A; }
+        .btn-ce:hover { background-color: #1A1A1A; }
 
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-        .art1, .art9 { grid-column: span 1; }
-    }
-</style>
+        /* CONTENEDOR DE LA INFOGRAFÍA */
+        .info-preliminar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-<div class="info-preliminar">
+        /* ESTILO BASE DE TARJETAS */
+        .art-card {
+            background: white;
+            border: var(--border-thick);
+            border-radius: 25px;
+            padding: 25px;
+            position: relative;
+            transition: 0.3s;
+            box-shadow: 8px 8px 0px #1A1A1A;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            overflow: hidden;
+        }
 
-    <div class="art-card art1">
-        <span class="art-num">Art. 1</span>
-        <i class="fas fa-crown art-icon"></i>
-        <h3>España: Estado de Derecho</h3>
-        <p>Estado social y democrático. La soberanía reside en el pueblo. Forma política: Monarquía Parlamentaria.</p>
-        <div class="valores-list">
-            <span class="tag-v">Libertad</span>
-            <span class="tag-v">Justicia</span>
-            <span class="tag-v">Igualdad</span>
-            <span class="tag-v">Pluralismo</span>
+        .art-card:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 12px 12px 0px #1A1A1A;
+        }
+
+        .art-num {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.1rem;
+            background: #1A1A1A;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 50px;
+            align-self: flex-start;
+            text-transform: uppercase;
+        }
+
+        .art-card h3 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.5rem;
+            line-height: 1.1;
+        }
+
+        /* COLORES ARCOÍRIS POR ARTÍCULO */
+        .art1 { background: #FF3D00 !important; color: white; grid-column: span 2; }
+        .art2 { background: #FF9100 !important; color: white; }
+        .art3 { background: #FFD600 !important; color: #1A1A1A; }
+        .art4 { background: #00E676 !important; color: #1A1A1A; }
+        .art5 { background: #00E5FF !important; color: #1A1A1A; }
+        .art6 { background: #2979FF !important; color: white; }
+        .art7 { background: #651FFF !important; color: white; }
+        .art8 { background: #D500F9 !important; color: white; }
+        .art9 { background: #F50057 !important; color: white; grid-column: span 2; }
+
+        .art-icon {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.2));
+        }
+
+        .valores-list, .principios-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .tag-v {
+            background: rgba(255,255,255,0.2);
+            border: 2px solid white;
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 900;
+        }
+
+        .tag-p {
+            background: rgba(0,0,0,0.1);
+            border: 2px solid rgba(0,0,0,0.2);
+            padding: 5px;
+            border-radius: 5px;
+            font-size: 0.75rem;
+            font-weight: 800;
+        }
+
+        @media (max-width: 850px) {
+            .art1, .art9 { grid-column: span 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header-ce">
+        <h1>Título Preliminar</h1>
+        <p>Artículos 1 al 9 de la Constitución Española</p>
+    </header>
+
+    <div class="nav-links-container">
+        <a href="https://desicuti.github.io/apporplaza1.github.io/index.html" class="nav-btn btn-inicio">
+            <i class="fas fa-home"></i> INICIO
+        </a>
+        <a href="https://desicuti.github.io/apporplaza1.github.io/esquemas230225.html" class="nav-btn btn-esquemas">
+            <i class="fas fa-book"></i> ESQUEMAS
+        </a>
+        <a href="https://desicuti.github.io/apporplaza1.github.io/ce230225.html" class="nav-btn btn-ce">
+            <i class="fas fa-gavel"></i> VOLVER A CE
+        </a>
+    </div>
+
+    <div class="info-preliminar">
+
+        <div class="art-card art1">
+            <span class="art-num">Art. 1</span>
+            <i class="fas fa-balance-scale art-icon"></i>
+            <h3>Estado de Derecho y Soberanía</h3>
+            <p>España se constituye en un Estado social y democrático de Derecho. La soberanía nacional reside en el pueblo español. Forma política: Monarquía parlamentaria.</p>
+            <div class="valores-list">
+                <span class="tag-v">Libertad</span>
+                <span class="tag-v">Justicia</span>
+                <span class="tag-v">Igualdad</span>
+                <span class="tag-v">Pluralismo político</span>
+            </div>
         </div>
-    </div>
 
-    <div class="art-card art2">
-        <span class="art-num">Art. 2</span>
-        <i class="fas fa-map-marked-alt art-icon"></i>
-        <h3>Unidad y Autonomía</h3>
-        <p>Unidad indisoluble de la Nación, pero reconoce el derecho a la autonomía de nacionalidades y regiones.</p>
-    </div>
-
-    <div class="art-card art3">
-        <span class="art-num">Art. 3</span>
-        <i class="fas fa-comments art-icon"></i>
-        <h3>Las Lenguas</h3>
-        <p>Castellano: oficial (deber de conocerlo, derecho a usarlo). Demás lenguas: oficiales según sus Estatutos.</p>
-    </div>
-
-    <div class="art-card art4">
-        <span class="art-num">Art. 4</span>
-        <i class="fas fa-flag art-icon"></i>
-        <h3>La Bandera</h3>
-        <p>Roja, amarilla (doble ancho) y roja. Los Estatutos pueden tener banderas propias (siempre junto a la de España).</p>
-    </div>
-
-    <div class="art-card art5">
-        <span class="art-num">Art. 5</span>
-        <i class="fas fa-city art-icon"></i>
-        <h3>La Capital</h3>
-        <p>La capital del Estado es la villa de <strong>Madrid</strong>.</p>
-    </div>
-
-    <div class="art-card art6">
-        <span class="art-num">Art. 6</span>
-        <i class="fas fa-vote-yea art-icon"></i>
-        <h3>Partidos Políticos</h3>
-        <p>Expresan pluralismo y voluntad popular. Creación libre y funcionamiento democrático.</p>
-    </div>
-
-    <div class="art-card art7">
-        <span class="art-num">Art. 7</span>
-        <i class="fas fa-users-cog art-icon"></i>
-        <h3>Sindicatos y Patronal</h3>
-        <p>Sindicatos y asociaciones empresariales: defienden intereses económicos y sociales.</p>
-    </div>
-
-    <div class="art-card art8">
-        <span class="art-num">Art. 8</span>
-        <i class="fas fa-shield-alt art-icon"></i>
-        <h3>Fuerzas Armadas</h3>
-        <p>Misión: integridad territorial y orden constitucional. Tierra, Armada y Aire.</p>
-    </div>
-
-    <div class="art-card art9">
-        <span class="art-num">Art. 9</span>
-        <i class="fas fa-gavel art-icon"></i>
-        <h3>Principios Jurídicos</h3>
-        <p>Sujeción de ciudadanos y poderes a la Constitución. Los poderes promueven la libertad e igualdad reales.</p>
-        <div class="principios-list">
-            <span class="tag-p">Legalidad</span>
-            <span class="tag-p">Jerarquía Normativa</span>
-            <span class="tag-p">Publicidad</span>
-            <span class="tag-p">Irretroactividad</span>
-            <span class="tag-p">Seguridad Jurídica</span>
-            <span class="tag-p">Responsabilidad</span>
-            <span class="tag-p">Interdicción Arbitrariedad</span>
+        <div class="art-card art2">
+            <span class="art-num">Art. 2</span>
+            <i class="fas fa-link art-icon"></i>
+            <h3>Unidad y Autonomía</h3>
+            <p>Fundamentada en la indisoluble unidad de la Nación española. Garantiza el derecho a la autonomía de nacionalidades y regiones y la solidaridad.</p>
         </div>
+
+        <div class="art-card art3">
+            <span class="art-num">Art. 3</span>
+            <i class="fas fa-language art-icon"></i>
+            <h3>El Idioma</h3>
+            <p>El castellano es la lengua española oficial (deber de conocerla y derecho a usarla). Las demás lenguas serán también oficiales en sus CC.AA.</p>
+        </div>
+
+        <div class="art-card art4">
+            <span class="art-num">Art. 4</span>
+            <i class="fas fa-flag art-icon"></i>
+            <h3>Símbolos: La Bandera</h3>
+            <p>Tres franjas horizontales: roja, amarilla (doble anchura) y roja. Se utilizarán banderas propias de CC.AA. junto a la de España.</p>
+        </div>
+
+        <div class="art-card art5">
+            <span class="art-num">Art. 5</span>
+            <i class="fas fa-map-marker-alt art-icon"></i>
+            <h3>La Capital</h3>
+            <p>La capital del Estado es la villa de <strong>Madrid</strong>.</p>
+        </div>
+
+        <div class="art-card art6">
+            <span class="art-num">Art. 6</span>
+            <i class="fas fa-bullhorn art-icon"></i>
+            <h3>Partidos Políticos</h3>
+            <p>Expresan el pluralismo político e instrumento fundamental para la participación. Estructura interna y funcionamiento democráticos.</p>
+        </div>
+
+        <div class="art-card art7">
+            <span class="art-num">Art. 7</span>
+            <i class="fas fa-briefcase art-icon"></i>
+            <h3>Sindicatos y Patronal</h3>
+            <p>Contribuyen a la defensa y promoción de intereses económicos y sociales. Creación libre y funcionamiento democrático.</p>
+        </div>
+
+        <div class="art-card art8">
+            <span class="art-num">Art. 8</span>
+            <i class="fas fa-shield-alt art-icon"></i>
+            <h3>Fuerzas Armadas</h3>
+            <p>Ejército de Tierra, Armada y Aire. Misión: Garantizar soberanía, independencia e integridad territorial.</p>
+        </div>
+
+        <div class="art-card art9">
+            <span class="art-num">Art. 9</span>
+            <i class="fas fa-gavel art-icon"></i>
+            <h3>Principios Constitucionales</h3>
+            <p>Sujeción de ciudadanos y poderes públicos a la Constitución. Promoción de libertad e igualdad real y efectiva.</p>
+            <div class="principios-list">
+                <span class="tag-p">Legalidad</span>
+                <span class="tag-p">Jerarquía normativa</span>
+                <span class="tag-p">Publicidad de las normas</span>
+                <span class="tag-p">Seguridad jurídica</span>
+                <span class="tag-p">Interdicción de la arbitrariedad</span>
+            </div>
+        </div>
+
     </div>
 
-</div>
+    <footer style="margin-top: 50px; text-align: center; padding: 20px; font-weight: 800; color: #1A1A1A;">
+        © 2026 A POR PLAZA - ESTUDIO DE ALTO RENDIMIENTO
+    </footer>
+
+</body>
+</html>
