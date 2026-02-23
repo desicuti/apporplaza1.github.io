@@ -86,7 +86,7 @@
             color: white;
         }
 
-        /* 3. CATEGORÍAS CON DEGRADADOS */
+        /* 3. CATEGORÍAS */
         .main-container { max-width: 1200px; margin: 60px auto; padding: 0 20px; }
 
         .bento-grid {
@@ -105,6 +105,9 @@
             color: white;
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .card::after {
@@ -121,9 +124,9 @@
         .card h2 { font-family: 'Archivo Black', sans-serif; margin-bottom: 15px; font-size: 1.8rem; text-transform: uppercase; }
         .card p { font-weight: 600; font-size: 1.1rem; margin-bottom: 25px; line-height: 1.4; }
 
-        .card-esquemas { background: var(--grad-1); }
-        .card-canciones { background: var(--grad-2); }
-        .card-ia { background: var(--grad-3); }
+        .card-recursos { background: var(--grad-1); }
+        .card-recomendaciones { background: var(--grad-2); }
+        .card-tips { background: var(--grad-3); }
 
         .btn-white {
             display: inline-block;
@@ -209,25 +212,31 @@
     <div class="main-container">
         
         <section class="bento-grid">
-            <div class="card card-esquemas">
-                <i class="fas fa-book-open"></i>
-                <h2>BIBLIOTECA DE ESQUEMAS</h2>
-                <p>Todos los PDFs de mis vídeos organizados por leyes para que tu estudio sea visual.</p>
-                <a href="#" class="btn-white">DESCARGAR</a>
+            <div class="card card-recursos">
+                <div>
+                    <i class="fas fa-folder-open"></i>
+                    <h2>MIS RECURSOS</h2>
+                    <p>Accede a mi biblioteca personal: Esquemas en PDF, canciones para memorizar y preguntas clave.</p>
+                </div>
+                <a href="https://desicuti.github.io/apporplaza1.github.io/esquemas230225.html" class="btn-white">ENTRAR</a>
             </div>
 
-            <div class="card card-canciones">
-                <i class="fas fa-bolt"></i>
-                <h2>CANCIONERO LEYES</h2>
-                <p>Letras y acordes de mis temas. Memorizar plazos nunca fue tan divertido.</p>
-                <a href="#" class="btn-white">ESCUCHAR</a>
+            <div class="card card-recomendaciones">
+                <div>
+                    <i class="fas fa-thumbs-up"></i>
+                    <h2>RECOMENDACIONES</h2>
+                    <p>Las herramientas, libros y academias que yo mismo utilizo y que te ayudarán a marcar la diferencia.</p>
+                </div>
+                <a href="#" class="btn-white">VER LISTA</a>
             </div>
 
-            <div class="card card-ia">
-                <i class="fas fa-brain"></i>
-                <h2>IA STUDY KITS</h2>
-                <p>Domina el temario con mis guías interactivas creadas con NotebookLM.</p>
-                <a href="#" class="btn-white">VER KITS</a>
+            <div class="card card-tips">
+                <div>
+                    <i class="fas fa-lightbulb"></i>
+                    <h2>TIPS Y ESTRATEGIA</h2>
+                    <p>Metodologías de estudio, técnicas de concentración y consejos reales para no morir en el intento.</p>
+                </div>
+                <a href="#" class="btn-white">APRENDER MÁS</a>
             </div>
         </section>
 
