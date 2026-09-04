@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word para Opositores | A por plaza</title>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Outfit:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --rainbow-vivid: linear-gradient(90deg, #FF0000, #FF7F00, #FFFF00, #00FF00, #0000FF, #4B0082, #8B00FF);
+            --text-dark: #1A1A1A;
+            --border-thick: 5px solid #1A1A1A;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: var(--rainbow-vivid);
+            background-attachment: fixed;
+            color: var(--text-dark);
+            font-family: 'Outfit', sans-serif;
+            line-height: 1.6;
+        }
+
+        /* HEADER */
+        .header-ce {
+            background: white;
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: var(--border-thick);
+        }
+
+        .header-ce h1 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(2.2rem, 7vw, 4.5rem);
+            color: var(--text-dark);
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            text-shadow: 3px 3px 0px #eee;
+            margin-bottom: 25px;
+        }
+
+        /* CONTENEDOR BOTONES HEADER */
+        .nav-header {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn-nav {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 25px;
+            background: var(--text-dark);
+            color: white;
+            text-decoration: none;
+            font-weight: 900;
+            border-radius: 50px;
+            border: 3px solid var(--text-dark);
+            transition: 0.3s;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        .btn-nav:hover { 
+            transform: translateY(-3px); 
+            background: #FFFF00; 
+            color: var(--text-dark);
+            box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* BLOQUES DE CONTENIDO */
+        .main-container { max-width: 900px; margin: 40px auto; padding: 0 20px; }
+
+        .seccion-bloque {
+            background: white;
+            border: var(--border-thick);
+            border-radius: 30px;
+            margin-bottom: 50px;
+            padding: 40px;
+            box-shadow: 15px 15px 0px rgba(0,0,0,0.3);
+        }
+
+        .seccion-titulo {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 6px solid #FFFF00;
+            padding-bottom: 10px;
+        }
+
+        /* ESTILOS DE IMAGEN Y PDF */
+        .img-esquema {
+            width: 100%;
+            border: var(--border-thick);
+            border-radius: 20px;
+            margin: 20px 0;
+        }
+
+        .pdf-container {
+            width: 100%;
+            height: 600px;
+            border: var(--border-thick);
+            border-radius: 20px;
+            overflow: hidden;
+            background: #f9f9f9;
+            margin-top: 20px;
+        }
+
+        footer {
+            padding: 60px 20px; 
+            background: var(--text-dark); 
+            color: white; 
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header-ce">
+        <h1>MICROSOFT WORD</h1>
+        <div class="nav-header">
+            <a href="https://desicuti.github.io/apporplaza1.github.io/index.html" class="btn-nav">
+                <i class="fas fa-home"></i> INICIO
+            </a>
+            <a href="https://desicuti.github.io/apporplaza1.github.io/esquemas230225.html" class="btn-nav">
+                <i class="fas fa-book"></i> VOLVER A LA BIBLIOTECA
+            </a>
+        </div>
+    </header>
+
+    <div class="main-container">
+
+        <section class="seccion-bloque">
+            <h2 class="seccion-titulo">📝 WORD PARA OPOSITORES</h2>
+            <p><strong>Esquema horizontal de comandos y utilidades:</strong></p>
+            
+            <!-- Imagen con bordes curvos y estilo del sitio -->
+            <img src="https://raw.githubusercontent.com/desicuti/apporplaza1.github.io/refs/heads/main/word%20esquema%20horizontal.png" alt="Esquema Word" class="img-esquema">
+            
+            <!-- PDF Incrustado de Google Drive -->
+            <div class="pdf-container">
+                <iframe src="https://drive.google.com/file/d/1GEwCoAoSunulpeRq3qljeTLM5rbE3um8/preview" width="100%" height="100%" allow="autoplay"></iframe>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>© 2026 A POR PLAZA | TU PLAZA ESTÁ CADA VEZ MÁS CERCA</p>
+    </footer>
+
+</body>
+</html>
