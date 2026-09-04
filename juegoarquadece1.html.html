@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arcade de Plazos Constitucionales | A por plaza</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Outfit:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --rainbow-vivid: linear-gradient(135deg, #FF0055, #FF5000, #FFCC00, #00E676, #00B0FF, #AA00FF);
+            --rainbow-animated: linear-gradient(270deg, #ff0055, #ff5000, #ffcc00, #00e676, #00b0ff, #aa00ff, #ff0055);
+            --text-dark: #000000;
+            --border-thick: 5px solid #000000;
+            --border-medium: 4px solid #000000;
+            --shadow-hard: 8px 8px 0px #000000;
+            --shadow-btn: 5px 5px 0px #000000;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: linear-gradient(135deg, #FFE5EC 0%, #F0E6FF 35%, #E8F9FF 70%, #E8FFE8 100%);
+            background-attachment: fixed;
+            color: var(--text-dark);
+            font-family: 'Outfit', sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        /* HEADER PRINCIPAL */
+        .header-ce {
+            background: var(--rainbow-animated);
+            background-size: 400% 400%;
+            animation: rainbowGradient 8s ease infinite;
+            padding: 35px 20px;
+            text-align: center;
+            border: var(--border-thick);
+            border-radius: 30px;
+            max-width: 1000px;
+            margin: 0 auto 30px auto;
+            box-shadow: 10px 10px 0px #000000;
+        }
+
+        @keyframes rainbowGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .header-ce h1 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(1.8rem, 5vw, 3.2rem);
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            color: #FFFFFF;
+            text-shadow: 4px 4px 0px #000;
+        }
+
+        .header-ce p {
+            color: #FFFF00;
+            text-shadow: 2px 2px 0px #000;
+            font-weight: 900;
+            margin-top: 5px;
+            font-size: 1.2rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* NAVEGACIÓN SUPERIOR */
+        .nav-links-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 35px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            text-decoration: none;
+            padding: 14px 24px;
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1rem;
+            color: #000000;
+            border: 4px solid #000000;
+            border-radius: 15px;
+            transition: 0.15s ease;
+            box-shadow: 6px 6px 0px #000000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-btn:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: 9px 9px 0px #000000;
+            color: #FFFFFF;
+        }
+
+        .btn-inicio { background-color: #00FF66; }
+        .btn-esquemas { background-color: #FF00AA; }
+        .btn-ce { background-color: #FFEA00; }
+
+        .btn-inicio:hover, .btn-esquemas:hover, .btn-ce:hover { background-color: #000000; }
+
+        /* CONTENEDOR DEL JUEGO ADAPTADO */
+        .game-wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .arcade-container {
+            background: linear-gradient(180deg, #FFF0F5 0%, #E6F9FF 100%);
+            border: var(--border-thick);
+            border-radius: 25px;
+            box-shadow: var(--shadow-hard);
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* BARRA DE ESTADÍSTICAS */
+        .header-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #111122;
+            color: #FFFFFF;
+            padding: 15px 20px;
+            border-radius: 18px;
+            border: 4px solid #000000;
+            flex-wrap: wrap;
+            gap: 12px;
+            box-shadow: 4px 4px 0px #000000;
+        }
+
+        .game-title {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.2rem;
+            color: #00FFFF;
+            text-shadow: 2px 2px 0px #FF007F;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .stats {
+            display: flex;
+            gap: 20px;
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.1rem;
+        }
+
+        .lives { color: #FF0055; text-shadow: 1px 1px 0px #FFF; }
+        .score-display { color: #FFEA00; text-shadow: 1px 1px 0px #000; }
+        .combo-display { color: #00FF66; text-shadow: 1px 1px 0px #000; }
+
+        /* BARRA DE TIEMPO */
+        .timer-container {
+            width: 100%;
+            height: 24px;
+            background: #000000;
+            border-radius: 12px;
+            border: 4px solid #000000;
+            overflow: hidden;
+            padding: 2px;
+        }
+
+        .timer-bar {
+            height: 100%;
+            width: 100%;
+            border-radius: 8px;
+            background: linear-gradient(90deg, #00FF66, #FFEA00, #FF0055);
+            transition: width 0.1s linear;
+        }
+
+        .timer-bar.warning {
+            animation: pulse-warning 0.3s infinite alternate;
+        }
+
+        @keyframes pulse-warning {
+            from { opacity: 1; filter: brightness(1.2); }
+            to { opacity: 0.3; }
+        }
+
+        /* TARJETA DE PREGUNTA MULTICOLOR */
+        .question-card {
+            background: linear-gradient(135deg, #FFF59D 0%, #FFCC80 100%);
+            border: var(--border-medium);
+            border-radius: 20px;
+            padding: 22px;
+            text-align: center;
+            box-shadow: var(--shadow-btn);
+            position: relative;
+        }
+
+        .question-badge {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 0.95rem;
+            background: #FF0055;
+            color: #FFFFFF;
+            padding: 6px 18px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            border: 3px solid #000000;
+            box-shadow: 3px 3px 0px #000000;
+        }
+
+        .question-text {
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: #000000;
+            line-height: 1.4;
+        }
+
+        /* PANTALLA DE RESPUESTA SELECCIONADA */
+        .answer-display-box {
+            background: linear-gradient(135deg, #E0F7FA 0%, #B2EBF2 100%);
+            border: var(--border-medium);
+            border-radius: 18px;
+            padding: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            box-shadow: var(--shadow-btn);
+            flex-wrap: wrap;
+        }
+
+        .display-value {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 2.5rem;
+            color: #000000;
+            background: #FFEA00;
+            padding: 4px 25px;
+            border-radius: 15px;
+            border: 4px solid #000000;
+            min-width: 110px;
+            text-align: center;
+            box-shadow: 4px 4px 0px #000000;
+        }
+
+        .display-unit {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.2rem;
+            color: #FFFFFF;
+            background: #AA00FF;
+            padding: 12px 24px;
+            border-radius: 15px;
+            border: 4px solid #000000;
+            min-width: 200px;
+            text-align: center;
+            box-shadow: 4px 4px 0px #000000;
+            text-transform: uppercase;
+        }
+
+        /* CONSOLA DE SELECCIÓN CON PALETA ARCOÍRIS */
+        .selector-console {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 18px;
+        }
+
+        @media (max-width: 700px) {
+            .selector-console { grid-template-columns: 1fr; }
+        }
+
+        .console-section {
+            background: #FFFFFF;
+            border: 4px solid #000000;
+            border-radius: 20px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            box-shadow: 4px 4px 0px #000000;
+        }
+
+        .section-title {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 0.9rem;
+            color: #000000;
+            text-align: center;
+            text-transform: uppercase;
+            background: #00E5FF;
+            padding: 4px 10px;
+            border-radius: 8px;
+            border: 2px solid #000;
+        }
+
+        /* TECLADO NUMÉRICO DE COLORES EXPLICITOS */
+        .numpad-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+        }
+
+        .btn-num {
+            border: 3px solid #000000;
+            border-radius: 12px;
+            color: #000000;
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.2rem;
+            padding: 12px 0;
+            cursor: pointer;
+            box-shadow: 3px 3px 0px #000000;
+            transition: all 0.1s ease;
+        }
+
+        /* Asignación de colores vivos por tecla */
+        .btn-num:nth-child(1) { background: #FF3366; color: white; }
+        .btn-num:nth-child(2) { background: #FF9900; }
+        .btn-num:nth-child(3) { background: #FFCC00; }
+        .btn-num:nth-child(4) { background: #33CC33; color: white; }
+        .btn-num:nth-child(5) { background: #00CCFF; }
+        .btn-num:nth-child(6) { background: #9933FF; color: white; }
+        .btn-num:nth-child(7) { background: #FF66CC; }
+        .btn-num:nth-child(8) { background: #00FFCC; }
+        .btn-num:nth-child(9) { background: #FF5050; color: white; }
+        .btn-num:nth-child(10) { background: #FFFF66; }
+
+        .btn-num:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px #000000;
+            filter: brightness(1.15);
+        }
+
+        .btn-num:active {
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0px #000000;
+        }
+
+        .btn-num.clear-btn {
+            background: #FF0000 !important;
+            color: #FFFFFF !important;
+            grid-column: span 2;
+        }
+
+        /* BOTONES DE UNIDADES CON IDENTIDAD DE COLOR */
+        .units-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            height: 100%;
+        }
+
+        .btn-unit {
+            border: 3px solid #000000;
+            border-radius: 12px;
+            color: #000000;
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 0.85rem;
+            padding: 10px 5px;
+            cursor: pointer;
+            box-shadow: 3px 3px 0px #000000;
+            transition: all 0.1s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .btn-unit:nth-child(1) { background: #FF9100; }
+        .btn-unit:nth-child(2) { background: #00E676; }
+        .btn-unit:nth-child(3) { background: #00B0FF; }
+        .btn-unit:nth-child(4) { background: #1DE9B6; }
+        .btn-unit:nth-child(5) { background: #E040FB; color: white; }
+        .btn-unit:nth-child(6) { background: #FFD600; }
+
+        .btn-unit:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 5px 5px 0px #000000;
+            filter: brightness(1.1);
+        }
+
+        .btn-unit.selected {
+            background: #000000 !important;
+            color: #00FFCC !important;
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0px #000000;
+            border-color: #00FFCC;
+        }
+
+        /* BOTÓN CONFIRMAR HIGHLIGHT */
+        .btn-submit {
+            background: var(--rainbow-animated);
+            background-size: 300% 300%;
+            animation: rainbowGradient 4s ease infinite;
+            border: 4px solid #000000;
+            border-radius: 20px;
+            color: #FFFFFF;
+            text-shadow: 3px 3px 0px #000;
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.3rem;
+            padding: 18px;
+            cursor: pointer;
+            box-shadow: 7px 7px 0px #000000;
+            transition: all 0.15s ease;
+            text-align: center;
+            text-transform: uppercase;
+            width: 100%;
+            letter-spacing: 1px;
+        }
+
+        .btn-submit:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: 10px 10px 0px #000000;
+            filter: brightness(1.1);
+        }
+
+        .btn-submit:active {
+            transform: translate(3px, 3px);
+            box-shadow: 2px 2px 0px #000000;
+        }
+
+        /* MODAL FEEDBACK */
+        .modal-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 20px;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 25px;
+            text-align: center;
+            z-index: 50;
+            border: var(--border-thick);
+        }
+
+        .modal-title {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 2.2rem;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            text-shadow: 3px 3px 0px #000;
+        }
+
+        .modal-title.correct { color: #00E676; }
+        .modal-title.incorrect { color: #FF0055; }
+
+        .modal-article {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.2rem;
+            background: #AA00FF;
+            color: #FFFFFF;
+            padding: 6px 20px;
+            border-radius: 50px;
+            margin-bottom: 15px;
+            border: 3px solid #000;
+            box-shadow: 3px 3px 0px #000;
+        }
+
+        .modal-explanation {
+            font-size: 1.1rem;
+            font-weight: 700;
+            line-height: 1.5;
+            color: #000000;
+            margin-bottom: 22px;
+            max-width: 600px;
+            background: #FFF59D;
+            padding: 18px;
+            border-radius: 15px;
+            border: 4px solid #000000;
+            box-shadow: 5px 5px 0px #000000;
+        }
+
+        .btn-next {
+            background: #00E5FF;
+            border: 4px solid #000000;
+            color: #000000;
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.1rem;
+            padding: 14px 32px;
+            border-radius: 15px;
+            cursor: pointer;
+            box-shadow: 6px 6px 0px #000000;
+            transition: all 0.15s ease;
+            text-transform: uppercase;
+        }
+
+        .btn-next:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: 9px 9px 0px #000000;
+            background: #FF00EA;
+            color: #FFFFFF;
+        }
+
+        /* ANIMACIÓN SHAKE PARA ERROR */
+        .shake {
+            animation: shake-anim 0.4s cubic-bezier(.36,.07,.19,.97) both;
+        }
+
+        @keyframes shake-anim {
+            10%, 90% { transform: translate3d(-2px, 0, 0); }
+            20%, 80% { transform: translate3d(4px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-8px, 0, 0); }
+            40%, 60% { transform: translate3d(8px, 0, 0); }
+        }
+
+        #confetti-canvas {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 60;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header-ce">
+        <h1>Plazos Constitucionales</h1>
+        <p>Desafío Interactivo de Repaso - Constitución Española</p>
+    </header>
+
+    <div class="nav-links-container">
+        <a href="https://desicuti.github.io/apporplaza1.github.io/index.html" class="nav-btn btn-inicio">
+            <i class="fas fa-home"></i> INICIO
+        </a>
+        <a href="https://desicuti.github.io/apporplaza1.github.io/esquemas230225.html" class="nav-btn btn-esquemas">
+            <i class="fas fa-book"></i> ESQUEMAS
+        </a>
+        <a href="https://desicuti.github.io/apporplaza1.github.io/ce230225.html" class="nav-btn btn-ce">
+            <i class="fas fa-gavel"></i> VOLVER A CE
+        </a>
+    </div>
+
+    <div class="game-wrapper">
+        <div class="arcade-container" id="arcade-game">
+            <canvas id="confetti-canvas"></canvas>
+
+            <div class="header-bar">
+                <div class="game-title"><i class="fas fa-stopwatch"></i> RETO DE PLAZOS</div>
+                <div class="stats">
+                    <div class="lives" id="lives-display">💖💖💖</div>
+                    <div class="score-display">PTS: <span id="score-val">0</span></div>
+                    <div class="combo-display">MULT: <span id="combo-val">x1</span></div>
+                </div>
+            </div>
+
+            <div class="timer-container">
+                <div class="timer-bar" id="timer-bar"></div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-badge" id="question-badge">DESAFÍO 1 / 10</div>
+                <div class="question-text" id="question-text">Cargando plazo constitucional...</div>
+            </div>
+
+            <div class="answer-display-box">
+                <div class="display-value" id="display-value">0</div>
+                <div class="display-unit" id="display-unit">SELECCIONAR</div>
+            </div>
+
+            <div class="selector-console">
+                <div class="console-section">
+                    <div class="section-title">1. Selecciona Número</div>
+                    <div class="numpad-grid">
+                        <button class="btn-num" onclick="pressNum('1')">1</button>
+                        <button class="btn-num" onclick="pressNum('2')">2</button>
+                        <button class="btn-num" onclick="pressNum('3')">3</button>
+                        <button class="btn-num" onclick="pressNum('4')">4</button>
+                        <button class="btn-num" onclick="pressNum('5')">5</button>
+                        <button class="btn-num" onclick="pressNum('6')">6</button>
+                        <button class="btn-num" onclick="pressNum('7')">7</button>
+                        <button class="btn-num" onclick="pressNum('8')">8</button>
+                        <button class="btn-num" onclick="pressNum('9')">9</button>
+                        <button class="btn-num" onclick="pressNum('0')">0</button>
+                        <button class="btn-num clear-btn" onclick="clearNum()">⌫ BORRAR</button>
+                    </div>
+                </div>
+
+                <div class="console-section">
+                    <div class="section-title">2. Unidad de Tiempo</div>
+                    <div class="units-grid">
+                        <button class="btn-unit" onclick="selectUnit('HORAS')">HORAS</button>
+                        <button class="btn-unit" onclick="selectUnit('DÍAS')">DÍAS</button>
+                        <button class="btn-unit" onclick="selectUnit('DÍAS HÁBILES')">DÍAS HÁBILES</button>
+                        <button class="btn-unit" onclick="selectUnit('DÍAS NATURALES')">DÍAS NATURALES</button>
+                        <button class="btn-unit" onclick="selectUnit('MESES')">MESES</button>
+                        <button class="btn-unit" onclick="selectUnit('AÑOS')">AÑOS</button>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn-submit" onclick="submitAnswer()">⚡ CONFIRMAR PLAZO ⚡</button>
+
+            <div class="modal-overlay" id="feedback-modal">
+                <div class="modal-title" id="modal-status">¡ACIERTO!</div>
+                <div class="modal-article" id="modal-article">Art. 17.2 CE</div>
+                <div class="modal-explanation" id="modal-explanation">Explicación...</div>
+                <button class="btn-next" id="btn-next-q" onclick="nextQuestion()">SIGUIENTE PLAZO ▶</button>
+            </div>
+        </div>
+    </div>
+
+    <footer style="margin-top: 50px; text-align: center; padding: 20px; font-weight: 800; color: #000000;">
+        © 2026 A POR PLAZA - ESTUDIO DE ALTO RENDIMIENTO
+    </footer>
+
+    <script>
+        const questionsData = [
+            {
+                q: "¿A qué edad se alcanza la mayoría de edad de los españoles según el Artículo 12 de la Constitución?",
+                num: 18,
+                unit: "AÑOS",
+                article: "Artículo 12 CE",
+                exp: "Los españoles son mayores de edad a los dieciocho (18) años."
+            },
+            {
+                q: "Plazo MÁXIMO de la detención preventiva hasta la puesta a disposición judicial o libertad (Art. 17.2 CE).",
+                num: 72,
+                unit: "HORAS",
+                article: "Artículo 17.2 CE",
+                exp: "La detención preventiva no podrá durar más del tiempo estrictamente necesario (...) y, en todo caso, en el plazo máximo de setenta y dos (72) horas."
+            },
+            {
+                q: "Antelación MÍNIMA ordinaria con la que debe comunicarse a la autoridad la celebración de manifestaciones (Art. 21.2 CE).",
+                num: 10,
+                unit: "DÍAS",
+                article: "Artículo 21.2 CE",
+                exp: "En los casos de reuniones en lugares de tránsito público y manifestaciones se dará comunicación previa a la autoridad con una antelación mínima de diez (10) días."
+            },
+            {
+                q: "Antelación MÍNIMA con la que se puede comunicar una manifestación en casos de URGENCIA JUSTIFICADA (Art. 21.2 CE / LO 9/1983).",
+                num: 24,
+                unit: "HORAS",
+                article: "Artículo 21.2 CE",
+                exp: "En caso de urgencia justificada, la comunicación previa a la autoridad podrá hacerse con veinticuatro (24) horas de antelación."
+            },
+            {
+                q: "Duración MÁXIMA inicial del Estado de Excepción autorizable por el Congreso (Art. 116.3 CE).",
+                num: 30,
+                unit: "DÍAS",
+                article: "Artículo 116.3 CE",
+                exp: "El estado de excepción no podrá exceder de treinta (30) días, prorrogable por otro plazo igual, con los mismos requisitos."
+            },
+            {
+                q: "Duración MÁXIMA de la prórroga del Estado de Excepción (Art. 116.3 CE).",
+                num: 30,
+                unit: "DÍAS",
+                article: "Artículo 116.3 CE",
+                exp: "El estado de excepción es prorrogable por un plazo igual de treinta (30) días."
+            },
+            {
+                q: "Plazo general ordinario de residencia continuada para adquirir la nacionalidad española por residencia (Art. 11.1 CE / Código Civil).",
+                num: 10,
+                unit: "AÑOS",
+                article: "Artículo 11.1 CE",
+                exp: "Para la concesión de la nacionalidad por residencia se requieren diez (10) años de forma general."
+            },
+            {
+                q: "Plazo MÁXIMO al que puede prolongarse la detención preventiva en Estado de Excepción o Sitio para sospechosos (Art. 55.1 CE / LO 4/1981).",
+                num: 10,
+                unit: "DÍAS",
+                article: "Artículo 55.1 CE",
+                exp: "Al suspenderse el Art. 17.2 en estado de excepción, la detención preventiva podrá durar un máximo de diez (10) días."
+            },
+            {
+                q: "Plazo máximo de duración del Estado de Alarma fijado en el Artículo 116.2 de la Constitución.",
+                num: 15,
+                unit: "DÍAS",
+                article: "Artículo 116.2 CE",
+                exp: "El estado de alarma será declarado por el Gobierno mediante decreto por un plazo máximo de quince (15) días."
+            },
+            {
+                q: "Edad mínima requerida expresamente en el Art. 12 CE para el pleno ejercicio de los derechos políticos.",
+                num: 18,
+                unit: "AÑOS",
+                article: "Artículo 12 CE",
+                exp: "La mayoría de edad y el pleno ejercicio de derechos políticos se alcanza a los dieciocho (18) años."
+            }
+        ];
+
+        let currentQIndex = 0;
+        let score = 0;
+        let combo = 1;
+        let lives = 3;
+        let timerInterval = null;
+        let timeLeft = 20;
+        const MAX_TIME = 20;
+
+        let selectedNumStr = "0";
+        let selectedUnitStr = "";
+
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+        function playSound(type) {
+            try {
+                if (audioCtx.state === 'suspended') audioCtx.resume();
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+
+                if (type === 'correct') {
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(523.25, audioCtx.currentTime);
+                    osc.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.25);
+                    gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.25);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.25);
+                } else if (type === 'wrong') {
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(180, audioCtx.currentTime);
+                    osc.frequency.linearRampToValueAtTime(80, audioCtx.currentTime + 0.3);
+                    gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.3);
+                } else if (type === 'click') {
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(600, audioCtx.currentTime);
+                    gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.04);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.04);
+                }
+            } catch (e) { }
+        }
+
+        window.onload = () => {
+            shuffleQuestions();
+            loadQuestion();
+        };
+
+        function shuffleQuestions() {
+            for (let i = questionsData.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [questionsData[i], questionsData[j]] = [questionsData[j], questionsData[i]];
+            }
+        }
+
+        function loadQuestion() {
+            if (currentQIndex >= questionsData.length) {
+                showEndScreen(true);
+                return;
+            }
+
+            const q = questionsData[currentQIndex];
+            document.getElementById("question-badge").innerText = `DESAFÍO ${currentQIndex + 1} / ${questionsData.length}`;
+            document.getElementById("question-text").innerText = q.q;
+
+            selectedNumStr = "0";
+            selectedUnitStr = "";
+            updateDisplay();
+            clearUnitHighlights();
+            startTimer();
+        }
+
+        function pressNum(digit) {
+            playSound('click');
+            if (selectedNumStr === "0") {
+                selectedNumStr = digit;
+            } else if (selectedNumStr.length < 3) {
+                selectedNumStr += digit;
+            }
+            updateDisplay();
+        }
+
+        function clearNum() {
+            playSound('click');
+            selectedNumStr = "0";
+            updateDisplay();
+        }
+
+        function selectUnit(unit) {
+            playSound('click');
+            selectedUnitStr = unit;
+            updateDisplay();
+
+            const buttons = document.querySelectorAll('.btn-unit');
+            buttons.forEach(btn => {
+                if (btn.innerText === unit) {
+                    btn.classList.add('selected');
+                } else {
+                    btn.classList.remove('selected');
+                }
+            });
+        }
+
+        function clearUnitHighlights() {
+            const buttons = document.querySelectorAll('.btn-unit');
+            buttons.forEach(btn => btn.classList.remove('selected'));
+        }
+
+        function updateDisplay() {
+            document.getElementById("display-value").innerText = selectedNumStr;
+            document.getElementById("display-unit").innerText = selectedUnitStr || "SELECCIONAR";
+        }
+
+        function startTimer() {
+            clearInterval(timerInterval);
+            timeLeft = MAX_TIME;
+            const timerBar = document.getElementById("timer-bar");
+            timerBar.classList.remove("warning");
+            timerBar.style.width = "100%";
+
+            timerInterval = setInterval(() => {
+                timeLeft -= 0.1;
+                const percentage = Math.max(0, (timeLeft / MAX_TIME) * 100);
+                timerBar.style.width = percentage + "%";
+
+                if (timeLeft <= 5) {
+                    timerBar.classList.add("warning");
+                }
+
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    handleTimeout();
+                }
+            }, 100);
+        }
+
+        function handleTimeout() {
+            processAnswer(false, "¡TIEMPO AGOTADO!");
+        }
+
+        function submitAnswer() {
+            if (selectedUnitStr === "") {
+                alert("Selecciona una unidad de tiempo (días, horas, años...).");
+                return;
+            }
+
+            clearInterval(timerInterval);
+            const q = questionsData[currentQIndex];
+            const numVal = parseInt(selectedNumStr, 10);
+
+            const isCorrect = (numVal === q.num && selectedUnitStr === q.unit);
+            processAnswer(isCorrect, isCorrect ? "¡ACIERTO CORRECTO!" : "¡RESPUESTA INCORRECTA!");
+        }
+
+        function processAnswer(isCorrect, statusTitle) {
+            const q = questionsData[currentQIndex];
+            const modal = document.getElementById("feedback-modal");
+            const statusEl = document.getElementById("modal-status");
+            const articleEl = document.getElementById("modal-article");
+            const expEl = document.getElementById("modal-explanation");
+
+            articleEl.innerText = q.article;
+            expEl.innerText = q.exp;
+
+            if (isCorrect) {
+                playSound('correct');
+                statusEl.innerText = statusTitle;
+                statusEl.className = "modal-title correct";
+                
+                score += 100 * combo;
+                combo++;
+                document.getElementById("score-val").innerText = score;
+                document.getElementById("combo-val").innerText = `x${combo}`;
+                triggerConfetti();
+            } else {
+                playSound('wrong');
+                statusEl.innerText = statusTitle;
+                statusEl.className = "modal-title incorrect";
+                
+                combo = 1;
+                lives--;
+                document.getElementById("combo-val").innerText = `x${combo}`;
+                updateLivesDisplay();
+
+                const gameBox = document.getElementById("arcade-game");
+                gameBox.classList.add("shake");
+                setTimeout(() => gameBox.classList.remove("shake"), 400);
+            }
+
+            modal.style.display = "flex";
+        }
+
+        function updateLivesDisplay() {
+            let hearts = "";
+            for (let i = 0; i < 3; i++) {
+                hearts += (i < lives) ? "💖" : "🖤";
+            }
+            document.getElementById("lives-display").innerText = hearts;
+        }
+
+        function nextQuestion() {
+            document.getElementById("feedback-modal").style.display = "none";
+            if (lives <= 0) {
+                showEndScreen(false);
+            } else {
+                currentQIndex++;
+                loadQuestion();
+            }
+        }
+
+        function showEndScreen(victory) {
+            clearInterval(timerInterval);
+            const modal = document.getElementById("feedback-modal");
+            const statusEl = document.getElementById("modal-status");
+            const articleEl = document.getElementById("modal-article");
+            const expEl = document.getElementById("modal-explanation");
+            const btnNext = document.getElementById("btn-next-q");
+
+            modal.style.display = "flex";
+            if (victory) {
+                playSound('correct');
+                statusEl.innerText = "¡ENHORABUENA! HAS COMPLETADO EL RETO";
+                statusEl.className = "modal-title correct";
+                articleEl.innerText = `PUNTUACIÓN FINAL: ${score} PTS`;
+                expEl.innerText = "Has repasado con éxito los plazos constitucionales clave.";
+            } else {
+                playSound('wrong');
+                statusEl.innerText = "¡GAME OVER!";
+                statusEl.className = "modal-title incorrect";
+                articleEl.innerText = `PUNTUACIÓN OBTENIDA: ${score} PTS`;
+                expEl.innerText = "Te has quedado sin vidas. ¡Sigue repasando y vuelve a intentarlo!";
+            }
+
+            btnNext.innerText = "REINICIAR JUEGO 🔄";
+            btnNext.onclick = () => location.reload();
+        }
+
+        function triggerConfetti() {
+            const canvas = document.getElementById("confetti-canvas");
+            const ctx = canvas.getContext("2d");
+            canvas.width = canvas.parentElement.clientWidth;
+            canvas.height = canvas.parentElement.clientHeight;
+
+            let particles = [];
+            const colors = ['#FF0055', '#FF5000', '#FFCC00', '#00E676', '#00B0FF', '#AA00FF'];
+            for (let i = 0; i < 60; i++) {
+                particles.push({
+                    x: canvas.width / 2,
+                    y: canvas.height / 2,
+                    vx: (Math.random() - 0.5) * 14,
+                    vy: (Math.random() - 0.5) * 14 - 3,
+                    size: Math.random() * 8 + 4,
+                    color: colors[Math.floor(Math.random() * colors.length)]
+                });
+            }
+
+            let alpha = 1;
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach(p => {
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    p.vy += 0.2;
+                    ctx.fillStyle = p.color;
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+                alpha -= 0.02;
+                if (alpha > 0) {
+                    requestAnimationFrame(animate);
+                }
+            }
+            animate();
+        }
+    </script>
+</body>
+</html>
